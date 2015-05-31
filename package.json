@@ -1,0 +1,27 @@
+{
+  "name": "generator-h5bp-with-less",
+  "version": "1.0.0",
+  "description": "HTML5 Boilerplate generator with Less",
+  "keywords": [
+    "yeoman-generator",
+    "html",
+    "boilerplate",
+    "template",
+    "h5bp"
+  ],
+  "author": {
+    "name": "Andrej Sobolev"
+  },
+  "main": "app/index.js",
+  "dependencies": {
+    "yeoman-generator": "^0.19.2",
+    "yeoman-assert": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": "MIT",
+  "files": [
+    "app"
+  ]
+}

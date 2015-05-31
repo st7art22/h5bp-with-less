@@ -1,0 +1,141 @@
+@import "var";
+
+/****
+ * Миксины, разное
+ ****/
+
+.opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+.img-responsive(@display: block) {
+    display: @display;
+    max-width: 100%; // Part 1: Set a maximum relative to the parent
+    height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+.size(@width, @height: @width) {
+    width: @width;
+    height: @height;
+}
+
+.sprite (@left: 0, @top: 0) {
+    background: transparent url('@{path-sprite}') @left @top no-repeat;
+}
+
+// Box sizing
+.box-sizing(@boxmodel: border-box) {
+    -webkit-box-sizing: @boxmodel;
+    -moz-box-sizing: @boxmodel;
+    box-sizing: @boxmodel;
+}
+
+.bg-data-uri(@file, @x: 0, @y: 0, @repeat: no-repeat, @color: transparent) {
+    background: @color data-uri('@{path-images-data-uri}@{file}') @x @y @repeat;
+}
+
+.border-radius(@top, @right: @top, @bottom: @top, @left: @right) {
+    -moz-border-radius: @top @right @bottom @left;
+    -webkit-border-radius: @top @right @bottom @left;
+    border-radius: @top @right @bottom @left;
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 0, @color: #000) {
+    -moz-box-shadow: @x @y @blur @color;
+    -webkit-box-shadow: @x @y @blur @color;
+    box-shadow: @x @y @blur @color;
+}
+
+.box-shadow-bt(@shadow) {
+    -webkit-box-shadow+: @shadow; // iOS <4.3 & Android <4.1
+    box-shadow+: @shadow;
+}
+
+.transition(@property: all, @duration: .3s, @type: ease-out, @delay: 0s) {
+    -webkit-transition+: @property @duration @type @delay;
+    -moz-transition+: @property @duration @type @delay;
+    -o-transition+: @property @duration @type @delay;
+    transition+: @property @duration @type @delay;
+}
+
+.hover-opacity(@opacity: 0.8) {
+    .transition(opacity, .3s, linear);
+
+    &:hover {
+        .opacity(@opacity)
+    }
+}
+
+.clearfix {
+    &:before {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+.transition-transform(@time: 0.3s) {
+    -webkit-transition: -webkit-transform @time ease;
+    -moz-transition: -moz-transform @time ease;
+    -ms-transition: -ms-transform @time ease;
+    -o-transition: -o-transform @time ease;
+    transition: transform @time ease;
+}
+
+.transform(@propvalue) {
+    -webkit-transform: @propvalue;
+    -moz-transform: @propvalue;
+    -ms-transform: @propvalue;
+    -o-transform: @propvalue;
+    transform: @propvalue;
+}
+
+.animation(@move, @time, @fx: linear) {
+    -webkit-animation: @move @time @fx;
+    -o-animation: @move @time @fx;
+    animation: @move @time @fx;
+}
+
+.arrow-bottom(@width: 0, @height: 0, @color: #000) {
+    .size(0);
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    border-left: @width/2 solid transparent;
+    border-right: @width/2 solid transparent;
+    border-top: @height solid @color;
+}
+.arrow-top(@width: 0, @height: 0, @color: #000) {
+    .size(0);
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    border-left: @width/2 solid transparent;
+    border-right: @width/2 solid transparent;
+    border-bottom: @height solid @color;
+}
+.arrow-left(@width: 0, @height: 0, @color: #000) {
+    .size(0);
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    border-top: @height/2 solid transparent;
+    border-bottom: @height/2 solid transparent;
+    border-right: @width solid @color;
+}
+.arrow-right(@width: 0, @height: 0, @color: #000) {
+    .size(0);
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    border-top: @height/2 solid transparent;
+    border-bottom: @height/2 solid transparent;
+    border-left: @width solid @color;
+}

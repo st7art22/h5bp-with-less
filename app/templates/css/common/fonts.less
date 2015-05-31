@@ -1,0 +1,16 @@
+@import "var";
+
+@font-face {
+    font-family: Rub;
+    src: url('@{path-fonts}rouble.eot');
+    src: local('ALS Rubl'), local('ALSRubl'),
+        url('@{path-fonts}rouble.woff') format('woff'),
+        url('@{path-fonts}rouble.ttf') format('truetype'),
+        url('@{path-fonts}rouble.svg#ALSRubl') format('svg');
+    font-weight: @font-weight-light;
+    font-style: normal;
+}
+
+.rub {
+    font-family: 'Rub' !important;
+}
